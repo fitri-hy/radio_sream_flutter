@@ -158,20 +158,21 @@ class _RadioListScreenState extends State<RadioListScreen> {
                     ),
                   ],
                 ),
-				trailing: Container(
-				  decoration: BoxDecoration(
-					color: Colors.blue,
-					borderRadius: BorderRadius.circular(50),
-				  ),
-				  padding: EdgeInsets.all(0),
-				  child: IconButton(
-					icon: Icon(Icons.play_arrow, color: Colors.white),
-					onPressed: !isPlaying ? () {
-					  _playStream(radio['streamUrl'], radio['currentTrack'], radio['name']);
-					} : null,
-				  ),
-				),
-
+				trailing: !isPlaying
+				? Container(
+					decoration: BoxDecoration(
+					  color: Colors.blue,
+					  borderRadius: BorderRadius.circular(50),
+					),
+					padding: EdgeInsets.all(0),
+					child: IconButton(
+					  icon: Icon(Icons.play_arrow, color: Colors.white),
+					  onPressed: () {
+						_playStream(radio['streamUrl'], radio['currentTrack'], radio['name']);
+					  },
+					),
+				  )
+				: SizedBox.shrink(),
               ),
             );
           },
